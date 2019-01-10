@@ -1,4 +1,4 @@
-CarbonROM 7.0 for Surn	ia
+CarbonROM 7.0 for Surnia
 =======================
 
 Current Status
@@ -23,41 +23,41 @@ Build Instructions
 
 Download the script
 
-	wget -q https://raw.githubusercontent.com/FacuM/shellscripts/master/android/buildrom/examples/los_surnia.sh -O ~/los_surnia.sh
+	wget -q https://raw.githubusercontent.com/FacuM/shellscripts/master/android/buildrom/examples/carbon_surnia.sh -O ~/carbon_surnia.sh
 
 Edit the variables at the top to your liking
 
-	vi ~/los_surnia.sh   or   nano ~/los_surnia.sh
+	vi ~/carbon_surnia.sh   or   nano ~/carbon_surnia.sh
 
 ![Variables to edit](https://i.imgur.com/6gqS7sn.png)
 
 Then begin the build, syncing source and just building what you need.
 
-	. ~/los_surnia.sh
+	. ~/carbon_surnia.sh
 
 If you want to remove the old source, you can run it like this.
 
-	. ~/los_surnia.sh reset
+	. ~/carbon_surnia.sh reset
 
 Or you can just clean the old compilation and build it all again.
 
-	. ~/los_surnia.sh clobber
+	. ~/carbon_surnia.sh clobber
 
 #### Manual compilation
 
 Create a build directory
 
-	mkdir -p los
-	cd los
+	mkdir -p carbon
+	cd carbon
 
-Initialize your local repository using the LOS trees:
+Initialize your local repository using the CarbonROM trees:
 
-	repo init -u git://github.com/LineageOS/android.git -b lineage-16.0
+	repo init -u https://github.com/CarbonROM/android.git -b cr-7.0
 
 Now move your magic wand
 	
 	mkdir -p .repo/local_manifests
-	wget -O .repo/local_manifests/surnia.xml https://github.com/surnia-development/los_surnia/raw/master/surnia.xml
+	wget -O .repo/local_manifests/surnia.xml https://github.com/Surnia-development/carbon_surnia/raw/master/surnia.xml
 
 Do this everytime before every sync for tracking changes.
 
@@ -70,7 +70,7 @@ Do this everything after sync for applying patches.
 Now start the build...
 
 	. build/envsetup.sh 
-	lunch los_surnia-userdebug
+	lunch carbon_surnia-userdebug
 	brunch surnia   or   mka otapackage
 
 Please see the [LineageOS WIKI](https://wiki.lineageos.org/) for further information.
