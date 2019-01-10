@@ -1,29 +1,20 @@
-
-Lineage 16.0 for Osprey
+CarbonROM 7.0 for Surnia
 =======================
 
 Current Status
 --------------
 
 What's working?
- - It boots!
- - RIL
- - Mobile data
- - Wifi
- - Bluetooth
- - GPS
- - Camera (apart from HDR)
- - Camcorder
+ - Unknown.
 
 What's not working?
- - Camera HDR
- - Volte
- - Probably more!
+ - Unknown.
 
 Download
 --------
 
-My current builds are available [here](https://mega.nz/#F!3F9CTSrQ!ZBLcFw1Mh_47FdxiZ2LYyg!uYlmhBKT).
+@ElDainosor's LineagOS builds are available [here](https://mega.nz/#F!3F9CTSrQ!ZBLcFw1Mh_47FdxiZ2LYyg!uYlmhBKT).
+My CarbonROM builds will be up [here](https://t.me/romdelivery).
 
 Build Instructions
 ------------------
@@ -40,7 +31,7 @@ Now create a local_manifests directory
 
     mkdir .repo/local_manifests
 
-Copy my local manifest 'surnia.xml' to the 'local_manifests' directory.
+Copy the local manifest 'surnia.xml' to the 'local_manifests' directory.
 
 Then to sync up:
 
