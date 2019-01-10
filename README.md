@@ -1,4 +1,4 @@
-CarbonROM 7.0 for Surnia
+CarbonROM 7.0 for Surn	ia
 =======================
 
 Current Status
@@ -18,40 +18,64 @@ My CarbonROM builds will be up [here](https://t.me/romdelivery).
 
 Build Instructions
 ------------------
+
+#### Automatic compilation
+
+Download the script
+
+	wget -q https://raw.githubusercontent.com/FacuM/shellscripts/master/android/buildrom/examples/los_surnia.sh -O ~/los_surnia.sh
+
+Edit the variables at the top to your liking
+
+	vi ~/los_surnia.sh   or   nano ~/los_surnia.sh
+
+![Variables to edit](https://i.imgur.com/6gqS7sn.png)
+
+Then begin the build, syncing source and just building what you need.
+
+	. ~/los_surnia.sh
+
+If you want to remove the old source, you can run it like this.
+
+	. ~/los_surnia.sh reset
+
+Or you can just clean the old compilation and build it all again.
+
+	. ~/los_surnia.sh clobber
+
+#### Manual compilation
+
 Create a build directory
 
-	mkdir lineage
-	cd lineage
+	mkdir -p los
+	cd los
 
-Initialize your local repository using the LineageOS trees, use a command like this:
+Initialize your local repository using the LOS trees:
 
-    repo init -u git://github.com/LineageOS/android.git -b lineage-16.0
+	repo init -u git://github.com/LineageOS/android.git -b lineage-16.0
 
-Now create a local_manifests directory
+Now move your magic wand
+	
+	mkdir -p .repo/local_manifests
+	wget -O .repo/local_manifests/surnia.xml https://github.com/surnia-development/los_surnia/raw/master/surnia.xml
 
-    mkdir .repo/local_manifests
-
-Copy the local manifest 'surnia.xml' to the 'local_manifests' directory.
+Do this everytime before every sync for tracking changes.
 
 Then to sync up:
 
-    repo sync -c -f --force-sync
+     repo sync  --force-sync --force-broken --current-branch --no-tags --no-clone-bundle --optimized-fetch --prune -j$(nproc --all)
 
-OR, for those with limited bandwidth/storage:
-
-    repo sync -c -f --no-clone-bundle --no-tags --force-sync --optimized-fetch --prune
-
-Currently I a use a few patches for development reasons and to fix a couple of compile issues. Copy patch.sh and the .patch files from this repo to the root of your build folder. Then run the patch.sh script to apply.
+Do this everything after sync for applying patches.	
 
 Now start the build...
 
-```bash
-# Go to the root of the source tree...
-$
-# ...and run to prepare our devices list
-$ . build/envsetup.sh
-# ... now run
-$ brunch surnia
-```
+	. build/envsetup.sh 
+	lunch los_surnia-userdebug
+	brunch surnia   or   mka otapackage
 
-Please see the [LineageOS Wiki](https://wiki.lineageos.org/) for further information.
+Please see the [LineageOS WIKI](https://wiki.lineageos.org/) for further information.
+
+Resources
+---------
+
+- Understanding bash sourcing: [How to detect if a script is being sourced - Stack Overflow](https://stackoverflow.com/questions/2683279/how-to-detect-if-a-script-is-being-sourced)
