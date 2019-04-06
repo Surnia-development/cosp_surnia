@@ -1,4 +1,4 @@
-CarbonROM 7.0 for Surnia
+COSP Pie for Surnia
 =======================
 
 Current Status
@@ -13,8 +13,8 @@ What's not working?
 Download
 --------
 
-@ElDainosor's LineagOS builds are available [here](https://mega.nz/#F!3F9CTSrQ!ZBLcFw1Mh_47FdxiZ2LYyg!uYlmhBKT).
-My CarbonROM builds will be up [here](https://t.me/romdelivery).
+@ElDainosor's LineageOS builds are available [here](https://mega.nz/#F!3F9CTSrQ!ZBLcFw1Mh_47FdxiZ2LYyg!uYlmhBKT).
+My COSP builds will be up [here](https://t.me/romdelivery).
 
 Build Instructions
 ------------------
@@ -23,41 +23,41 @@ Build Instructions
 
 Download the script
 
-	wget -q https://raw.githubusercontent.com/FacuM/shellscripts/master/android/buildrom/examples/carbon_surnia.sh -O ~/carbon_surnia.sh
+	wget -q https://raw.githubusercontent.com/FacuM/shellscripts/master/android/buildrom/examples/cosp_surnia.sh -O ~/cosp_surnia.sh
 
 Edit the variables at the top to your liking
 
-	vi ~/carbon_surnia.sh   or   nano ~/carbon_surnia.sh
+	vi ~/cosp_surnia.sh   or   nano ~/cosp_surnia.sh
 
 ![Variables to edit](https://i.imgur.com/6gqS7sn.png)
 
 Then begin the build, syncing source and just building what you need.
 
-	. ~/carbon_surnia.sh
+	. ~/cosp_surnia.sh
 
 If you want to remove the old source, you can run it like this.
 
-	. ~/carbon_surnia.sh reset
+	. ~/cosp_surnia.sh reset
 
 Or you can just clean the old compilation and build it all again.
 
-	. ~/carbon_surnia.sh clobber
+	. ~/cosp_surnia.sh clobber
 
 #### Manual compilation
 
 Create a build directory
 
-	mkdir -p carbon
-	cd carbon
+	mkdir -p cosp
+	cd cosp
 
-Initialize your local repository using the CarbonROM trees:
+Initialize your local repository using the COSP trees:
 
-	repo init -u https://github.com/CarbonROM/android.git -b cr-7.0
+	repo init -u https://github.com/cosp-project/manifest -b pie
 
 Now move your magic wand
 	
 	mkdir -p .repo/local_manifests
-	wget -O .repo/local_manifests/surnia.xml https://github.com/Surnia-development/carbon_surnia/raw/master/surnia.xml
+	wget -O .repo/local_manifests/surnia.xml https://github.com/Surnia-development/cosp_surnia/raw/master/surnia.xml
 
 Do this everytime before every sync for tracking changes.
 
@@ -70,8 +70,8 @@ Do this everything after sync for applying patches.
 Now start the build...
 
 	. build/envsetup.sh 
-	lunch carbon_surnia-userdebug
-	brunch surnia   or   mka otapackage
+	lunch cosp_surnia-userdebug
+	brunch surnia   or   mka bacon
 
 Please see the [LineageOS WIKI](https://wiki.lineageos.org/) for further information.
 
